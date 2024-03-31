@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 class TreeNode
 {
     public TreeNode left;
@@ -43,6 +45,37 @@ class BinaryTree
         traversingTree(root.right);
     }
 
+    //traversing the binary tree iteratively
+    public void traversingIteratively(TreeNode root)
+    {
+        if(root == null)
+        {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while(!stack.isEmpty())
+        {
+            TreeNode temp = stack.pop();
+
+            System.out.print(temp.data + " ");
+
+            
+
+            if(temp.right != null)
+            {
+                stack.push(temp.right);
+            }
+
+            if(temp.left != null)
+            {
+                stack.push(temp.left);
+            }
+        }
+    }
+
     
 }
 
@@ -53,5 +86,7 @@ class Main
         BinaryTree bt = new BinaryTree();
         bt.createTree();
         bt.traversingTree(bt.root);
+        System.out.println();
+        bt.traversingIteratively(bt.root);
     }
 }
