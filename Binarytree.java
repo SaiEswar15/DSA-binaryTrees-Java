@@ -127,7 +127,26 @@ class BinaryTree
 
     public void postOrderIterativeTraversal(TreeNode root)
     {
-
+        TreeNode current = root;
+        TreeNode temp;
+        Stack<TreeNode> stack = new Stack<>();
+        while(current != null || !stack.isEmpty())
+        {
+            if(current != null)
+            {
+                stack.push(current);
+                current = current.left;
+            }
+            else
+            {
+                temp = stack.pop();
+                System.out.print(temp);
+                temp = stack.peek();
+                current = temp.right;
+            }
+            
+        }
+        
     }
 }
 
